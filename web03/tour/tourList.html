@@ -3,12 +3,12 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>공지사항 글 등록</title>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css">
-	<link rel="stylesheet" href="../css/head.css">
-	<style>
-		#nav { border-bottom:3px solid #ddd; }
-	</style>
+    <title>장소 목록</title>
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://code.jquery.com/jquery-latest.js"></script>
+    <link rel="stylesheet" href="../css/head.css">
   </head>
   <body>
 	<nav class="navbar" role="navigation" aria-label="main navigation" id="nav">
@@ -93,7 +93,7 @@
                         여행필수정보
                   </a>
                   <div class="navbar-dropdown">
-                       <a class="navbar-item" href="noticeList.html">
+                       <a class="navbar-item" href="../notice/noticeList.html">
                              공지사항
                        </a>
                   </div> 
@@ -103,10 +103,10 @@
           <div class="navbar-end">
             <div class="navbar-item">
            <div class="buttons">
-           <a href="../user/login.html" class="button is-primary">
+           <a href="login.html" class="button is-primary">
                <strong>로그인</strong>
              </a>
-             <a href="../user/agree.html" class="button is-primary">
+             <a href="agree.html" class="button is-primary">
                <strong>회원가입</strong>
              </a>
            </div>
@@ -116,36 +116,73 @@
       </nav>
   <section class="section">
     <div class="container">
-      <h1 class="title">글 등록하기</h1>
-      	<form action="${path1 }/AddNoticeCtrl.do" method="post">
-			<table class="table">
-			   <tbody>
-			    <tr>
-			      <th><label for="title">제목</label></th>
-			      <td><input type="text" class="input" maxlength="120" name="title" id="title" placeholder="제목 입력" required /></td>
-			    </tr>
-			    <tr>
-			      <th><label for="content">내용</label></th>
-			      <td><textarea rows="8" cols="100" name="content" id="content" class="textarea" required></textarea></td>
-			    </tr>
-			  </tbody>
-			</table>
-			<div class="buttons">
-			  <button type="submit" class="button is-primary">등록</button>
-			  <button type="reset" class="button is-primary">취소</button>
-			  <a href="${path1 }/GetNoticeListCtrl.do" class="button is-primary">목록</a>
-			</div>
-		</form>
+      <h1 class="title">장소 목록</h1>
+		<table class="table">
+		  <thead>
+		    <tr>
+		      <th><abbr title="Num">Num</abbr></th>
+		      <th><abbr title="Cate">Category</abbr></th>
+		      <th><abbr title="Place">Place</abbr></th>
+		    </tr>
+		  </thead>
+		   <tbody>
+		   <c:forEach items="${list }" var="dto" varStatus="status">
+		    <tr>
+		      <td>${status.count }</td>
+		      <td>
+				<c:set var="cate" value="${dto.cate }" /> 
+				<c:if test="${cate eq 'A' }">
+				<span>관광</span>
+				</c:if>
+				<c:if test="${cate eq 'B' }">
+				<span>체험</span>
+				</c:if>
+				<c:if test="${cate eq 'C' }">
+				<span>행사</span>
+				</c:if>
+				<c:if test="${grade eq 'D' }">
+				<span>축제</span>
+				</c:if>
+				<c:if test="${cate eq 'E' }">
+				<span>숙박</span>
+				</c:if>
+				<c:if test="${cate eq 'F' }">
+				<span>음식</span>
+				</c:if>
+				<c:if test="${cate eq 'G' }">
+				<span>쇼핑</span>
+				</c:if>
+				<c:if test="${cate eq 'H' }">
+				<span>기타</span>
+				</c:if>
+		      </td>
+		      <td>
+		      	<a href="${path1 }/GetTourDetailCtrl.do?no=${dto.no }">${dto.place }</a>
+			  </td>
+		    </tr>
+		    </c:forEach>
+			<c:if test="${empty list }">
+		    <tr>
+		    	<td colspan="3">해당 데이터 목록이 없습니다.</td>
+		    </tr>
+		    </c:if>
+		  </tbody>
+		</table>
+		<c:if test='${sid.equals("admin") }'>
+		<div class="buttons">
+		  <a href="addTour.html" class="button is-primary">장소 등록</a>
+		</div>
+		</c:if>
     </div>
   </section>
   <footer class="footer">
-    <div class="content has-text-centered">
-      <p>
-        <strong>Bulma</strong> by <a href="https://jgthms.com">Jeremy Thomas</a>. The source code is licensed
-        <a href="http://opensource.org/licenses/mit-license.php">MIT</a>. The website content
-        is licensed <a href="http://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY NC SA 4.0</a>.
-      </p>
-    </div>
+	<div class="content has-text-centered">
+	  <p>
+		<strong>Bulma</strong> by <a href="https://jgthms.com">Jeremy Thomas</a>. The source code is licensed
+		<a href="http://opensource.org/licenses/mit-license.php">MIT</a>. The website content
+		is licensed <a href="http://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY NC SA 4.0</a>.
+	  </p>
+	</div>
   </footer>
   </body>
 </html>

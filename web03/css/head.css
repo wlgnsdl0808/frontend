@@ -9,7 +9,7 @@ background-size:100% auto; background-repeat:no-repeat; }
 #sidebar .navbar { display:block; width:100%; background-color:transparent; }
 #sidebar .navbar-item { float:none; clear:both; display:block; width:100%; }
 #frm1 .inline { width:70%; float:left; margin-right:2%; }
-.navbar-item.has-dropdown.is-hoverable { min-width:110px; position:static; }
+.navbar-item.has-dropdown.is-hoverable { min-width:110px; }
 .navbar-item.has-dropdown.is-hoverable a { font-weight:800; }
 .navbar-item.has-dropdown.is-hoverable.single { position:relative; }
 #nav .navbar-dropdown.cate { min-width:940px; width:940px; position:absolute; left:50px; }
