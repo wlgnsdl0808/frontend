@@ -3,19 +3,17 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>공지사항 목록</title>
+    <title>장소 상세보기</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css">
+    <script src="https://code.jquery.com/jquery-latest.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"></script>
     <link rel="stylesheet" href="../css/head.css">
-	<style>
-		#nav { border-bottom:3px solid #ddd; }
-    .table { min-width:960px; }
-    
-	</style>
   </head>
   <body>
 	<nav class="navbar" role="navigation" aria-label="main navigation" id="nav">
         <div class="navbar-brand">
-          <a href="../index.html"><img src = "../data/logo.png"></a>
+          <a href="#"><img src = "../data/logo.png"></a>
       
           <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false" data-target="navbarBasicExample">
             <span aria-hidden="true"></span>
@@ -47,7 +45,7 @@
                         관광지
                   </a>
                   <div class="navbar-dropdown">
-                    <a class="navbar-item">
+                    <a class="navbar-item" href="tourList.html">
                           전체
                     </a>
                     <a class="navbar-item">
@@ -79,7 +77,7 @@
                         축제.행사
                   </a>
                   <div class="navbar-dropdown">
-                    <a class="navbar-item" href="../tour/tourList.html">
+                    <a class="navbar-item" href="tourList.html">
                           전체
                     </a>
                     <a class="navbar-item">
@@ -95,7 +93,7 @@
                         여행필수정보
                   </a>
                   <div class="navbar-dropdown">
-                       <a class="navbar-item" href="noticeList.html">
+                       <a class="navbar-item" href="../notice/noticeList.html">
                              공지사항
                        </a>
                   </div> 
@@ -117,46 +115,44 @@
         </div>
       </nav>
   <section class="section">
-  <div class="columns is-full">
     <div class="container">
-      <h1 class="title">공지사항 목록</h1>
-		<table class="table">
-		  <thead>
-		    <tr>
-		      <th><abbr title="No">No</abbr></th>
-		      <th><abbr title="Title">Title</abbr></th>
-		      <th><abbr title="Result">RegDate</abbr></th>
-		    </tr>
-		  </thead>
-		   <tbody>
-		    <tr>
-		      <td>1</td>
-		      <td><a href="noticeDetail.html">공지사항1</a></td>
-		      <td>2022-12-01</td>
-		    </tr>
-        <tr>
-		      <td>2</td>
-		      <td><a href="${path1 }/GetNoticeCtrl.do?no=${dto.no }">공지사항2</a></td>
-		      <td>2022-12-02</td>
-		    </tr>
-        <tr>
-		      <td>3</td>
-		      <td><a href="${path1 }/GetNoticeCtrl.do?no=${dto.no }">공지사항3</a></td>
-		      <td>2022-12-03</td>
-		    </tr>
-		  </tbody>
-		</table>
-    </div>
+      <h1 class="title">장소 상세보기</h1>
+      	<div id="con">
+      		<div class="tile is-ancestor columns" style="padding-bottom:40px;">
+      			<c:if test="${not empty list }">
+				<c:forEach items="${list }" var="dto" varStatus="status">
+			      <div class="tile is-3" style="box-sizing:border-box;">
+			        <article class="tile is-child is-one-third notification" style="background-color:transparent; border:1px solid #eee; margin-right:10px!important;">
+			          <p class="title">평화누리1코스</p>
+			          <p class="subtitle">
+						숲.길
+			          </p>
+			          <figure class="image is-4by3">
+			            <img src="tour1.jpg" alt="">
+			          </figure>
+			          <div class="content" style="margin:10px;">
+			          	<p class="item_com">평화누리1코스</p>
+			          </div>
+			          <a href="tourDetail.html" class="button is-primary">자세히 보기</a>
+			        </article>
+			      </div>
+				</c:forEach>	
+		    	</c:if>
+			</div>
+      	</div>
+		<div class="buttons">
+		  <a href="${path1 }/GetTourListCtrl.do" class="button is-primary">전체 목록</a>
+		</div>
     </div>
   </section>
   <footer class="footer">
-    <div class="content has-text-centered">
-      <p>
-        <strong>Bulma</strong> by <a href="https://jgthms.com">Jeremy Thomas</a>. The source code is licensed
-        <a href="http://opensource.org/licenses/mit-license.php">MIT</a>. The website content
-        is licensed <a href="http://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY NC SA 4.0</a>.
-      </p>
-    </div>
+	<div class="content has-text-centered">
+	  <p>
+		<strong>Bulma</strong> by <a href="https://jgthms.com">Jeremy Thomas</a>. The source code is licensed
+		<a href="http://opensource.org/licenses/mit-license.php">MIT</a>. The website content
+		is licensed <a href="http://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY NC SA 4.0</a>.
+	  </p>
+	</div>
   </footer>
   </body>
 </html>

@@ -3,12 +3,9 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>공지사항 글 등록</title>
+    <title>공지사항 상세보기</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css">
-	<link rel="stylesheet" href="../css/head.css">
-	<style>
-		#nav { border-bottom:3px solid #ddd; }
-	</style>
+    <link rel="stylesheet" href="../css/head.css">
   </head>
   <body>
 	<nav class="navbar" role="navigation" aria-label="main navigation" id="nav">
@@ -30,7 +27,7 @@
                   </a>
                   <div class="navbar-dropdown">
                     <a class="navbar-item">
-                          김포길
+                          전체
                     </a>
                     <a class="navbar-item">
                           레포츠
@@ -77,7 +74,7 @@
                         축제.행사
                   </a>
                   <div class="navbar-dropdown">
-                    <a class="navbar-item">
+                    <a class="navbar-item" href="../tour/tourList.html">
                           전체
                     </a>
                     <a class="navbar-item">
@@ -116,36 +113,45 @@
       </nav>
   <section class="section">
     <div class="container">
-      <h1 class="title">글 등록하기</h1>
-      	<form action="${path1 }/AddNoticeCtrl.do" method="post">
-			<table class="table">
-			   <tbody>
-			    <tr>
-			      <th><label for="title">제목</label></th>
-			      <td><input type="text" class="input" maxlength="120" name="title" id="title" placeholder="제목 입력" required /></td>
-			    </tr>
-			    <tr>
-			      <th><label for="content">내용</label></th>
-			      <td><textarea rows="8" cols="100" name="content" id="content" class="textarea" required></textarea></td>
-			    </tr>
-			  </tbody>
-			</table>
-			<div class="buttons">
-			  <button type="submit" class="button is-primary">등록</button>
-			  <button type="reset" class="button is-primary">취소</button>
-			  <a href="${path1 }/GetNoticeListCtrl.do" class="button is-primary">목록</a>
-			</div>
-		</form>
+      <h1 class="title">공지사항 상세보기</h1>
+      <jsp:include page="/head.jsp" />
+		<table class="table">
+		   <tbody>
+		    <tr>
+		      <th>번호</th>
+		      <td>1</td>
+		    </tr>
+		    <tr>
+		      <th>제목</th>
+		      <td>공지사항1</td>
+		    </tr>
+		    <tr>
+		      <th>내용</th>
+		      <td><p>공지사항1</p></td>
+		    </tr>
+		    <tr> 
+		      <th>작성일</th>
+		      <td>
+				2022-12-01
+		      </td>
+		    </tr>
+		    <tr>
+		      <th>읽은 횟수</th>
+		      <td><p>0</p></td>
+		    </tr>
+		  </tbody>
+		</table>
+		<a href="noticeList.html" class="button is-primary">목록</a>
     </div>
   </section>
   <footer class="footer">
-    <div class="content has-text-centered">
-      <p>
-        <strong>Bulma</strong> by <a href="https://jgthms.com">Jeremy Thomas</a>. The source code is licensed
-        <a href="http://opensource.org/licenses/mit-license.php">MIT</a>. The website content
-        is licensed <a href="http://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY NC SA 4.0</a>.
-      </p>
-    </div>
+	<div class="content has-text-centered">
+	  <p>
+		<strong>Bulma</strong> by <a href="https://jgthms.com">Jeremy Thomas</a>. The source code is licensed
+		<a href="http://opensource.org/licenses/mit-license.php">MIT</a>. The website content
+		is licensed <a href="http://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY NC SA 4.0</a>.
+	  </p>
+	</div>
   </footer>
   </body>
 </html>
